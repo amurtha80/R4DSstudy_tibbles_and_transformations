@@ -1,17 +1,19 @@
 ---
 title: "R4DS Study Group 2"
-subtitle: "Tibbles and Transformations"
 author: "Andy Murtha"
-institute: "MiR Study Group"
-date: "2016/05/05 (updated: `r Sys.Date()`)"
+date: '2016/05/05 (updated: `r Sys.Date()`)'
 output:
   xaringan::moon_reader:
-    seal: FALSE
+    seal: no
     lib_dir: libs
     nature:
       highlightStyle: github
-      highlightLines: true
-      countIncrementalSlides: false
+      highlightLines: yes
+      countIncrementalSlides: no
+  html_document:
+    df_print: paged
+subtitle: Tibbles and Transformations
+institute: MiR Study Group
 ---
 class: middle, center, middle
 
@@ -21,4 +23,42 @@ class: middle, center, middle
 
 <br><br>`r icons::fontawesome("github")`.large[amurtha80]
 <br><br>`r icons::fontawesome("twitter")`.large[@murtha_andy]
+---
+class: top, center
+
+# Tibbles
+
+<br><br><br><br>![](TroubleWithTribbles.jpg)
+---
+class: top, left
+
+# Tibbles
+
+<br>
+
+## What is a Tibble?
+
+--
+<br><br>
+
+"A lazy, opinionated data frame that makes working in the tidyverse a bit easier"
+
+
+<br><br><br><br><br><br>Credit: Hadley Wickam, R4DS
+---
+class: top, left
+
+# Tibbles
+
+<br>
+
+### Attributes of a tibble
+
+<br><br>
+--
+- It never changes the type of the inputs (e.g. it never converts strings to factors)
+--
+<br>- It never changes the names of the variables
+--
+<br>- It never creates row names
 ---
