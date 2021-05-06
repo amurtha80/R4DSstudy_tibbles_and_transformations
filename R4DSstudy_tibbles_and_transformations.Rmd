@@ -1,0 +1,21 @@
+---
+title: "R4DS Study Group 2"
+subtitle: "Tibbles and Transformations"
+author: "Andy Murtha"
+institute: "MiR Study Group"
+date: "2016/05/05 (updated: `r Sys.Date()`)"
+output:
+  xaringan::moon_reader:
+    seal: FALSE
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+class: middle, center, middle
+
+# R4DS Study Group: Tibbles and Transformations
+
+<br><br>.large[Andy Murtha| MiR Study Group | 09 May 2021]
+---
