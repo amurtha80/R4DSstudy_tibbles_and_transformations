@@ -62,3 +62,18 @@ class: top, left
 --
 <br>- It never creates row names
 ---
+class: top, left
+```{r setup, include = FALSE }
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(fig.retina = 3, warning = FALSE, message = FALSE)
+library(tidyverse)
+```
+---
+class: top, left
+
+# Tibbles
+
+<br>
+
+### Creating or Converting Tibbles
+---
