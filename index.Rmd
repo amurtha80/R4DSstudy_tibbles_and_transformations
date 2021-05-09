@@ -63,9 +63,13 @@ class: top, left
 <br>- It never creates row names
 ---
 class: top, left
-```{r setup, include = FALSE }
+```{r setup, include = FALSE}
 options(htmltools.dir.version = FALSE)
-knitr::opts_chunk$set(fig.retina = 3, warning = FALSE, message = FALSE)
+knitr::opts_chunk$set(
+  fig.retina = 3, 
+  warning = FALSE, 
+  message = FALSE,
+  eval = TRUE)
 library(tidyverse)
 ```
 ---
@@ -119,4 +123,26 @@ tibble(
 <br>- The primary reason that some older functions don't work with tibble is the `[` function.
 --
 <br>- With base R data frames, `[` sometimes returns a data frame, and sometimes returns a vector. With tibbles, `[` always returns another tibble
+---
+class: top, center
+
+# Transformations
+### (with dplyr)
+
+<br><br>
+![](butterflytransformation.jpg)
+---
+
+# Transformations
+
+### Goal: To get the data in exactly the correct form you need
+
+--
+* `dplyr::` verbs
+  + `filter()` _pick observations based on their values_
+  + `arrange()` _(re)order observations_
+  + `select()` _choose specific variables_
+  + `mutate()` _create new variables or derive variables from existing ones_
+  + `summarize()` _condense many observations down to a single summary (grouped summaries)_
+  + grouped `mutate()` and `filter()` _change the scope of a function from all observations in a data frame to groups of observations within a data frame_
 ---

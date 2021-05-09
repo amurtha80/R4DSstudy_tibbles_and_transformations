@@ -136,6 +136,28 @@ tibble(
 --
 &lt;br&gt;- With base R data frames, `[` sometimes returns a data frame, and sometimes returns a vector. With tibbles, `[` always returns another tibble
 ---
+class: top, center
+
+# Transformations
+### (with dplyr)
+
+&lt;br&gt;&lt;br&gt;
+![](butterflytransformation.jpg)
+---
+
+# Transformations
+
+### Goal: To get the data in exactly the correct form you need
+
+--
+* `dplyr::` verbs
+  + `filter()` _pick observations based on their values_
+  + `arrange()` _(re)order observations_
+  + `select()` _choose specific variables_
+  + `mutate()` _create new variables or derive variables from existing ones_
+  + `summarize()` _condense many observations down to a single summary (grouped summaries)_
+  + grouped `mutate()` and `filter()` _change the scope of a function from all observations in a data frame to groups of observations within a data frame_
+---
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
