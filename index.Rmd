@@ -90,3 +90,33 @@ tibble(
 ```
 ]
 ---
+
+# Tibbles
+
+### Comparing Tibbles to Data Frames
+
+<br><br>
+--
+- Printing: tibbles have a refined print method that only shows the first 10 rows, and all columns fit on the screen
+--
+<br>- Printing: each column reports its data type, a nice feature borrowed from str()
+--
+<br>- Subsetting: some additional tools if you want to pull out a single variable
+--
+<br>- Subsetting: `$` extracts variable by name, `[[` extracts variable by name or position
+--
+<br>- Subsetting: To use these in a pipe you will need to use a special placeholder `.`
+---
+
+# Tibbles
+
+### Interacting with Older Code
+
+<br><br>
+--
+- Some older functions don't work with tibbles. If this is the case use `as.data.frame()` to coerce the tibble to a `data.frame`
+--
+<br>- The primary reason that some older functions don't work with tibble is the `[` function.
+--
+<br>- With base R data frames, `[` sometimes returns a data frame, and sometimes returns a vector. With tibbles, `[` always returns another tibble
+---
