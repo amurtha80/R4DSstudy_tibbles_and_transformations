@@ -154,3 +154,27 @@ class: top, center
 
 .center[![](palmerpenguins.png)]
 ---
+
+# Transformations
+
+### `filter()` based on an observation's values
+
+* What if we would like to view only observations related to the Chinstrap penguins?
+
+```{r}
+penguins %>% 
+  filter(species == "Chinstrap")
+```
+---
+
+# Transformations
+
+### `arrange()` your observations based on a specific order of variable
+
+* Which type of penguin has the most observations in the data frame?
+```{r}
+penguins %>%
+  count(species) %>% 
+  arrange(desc(n))
+```
+---

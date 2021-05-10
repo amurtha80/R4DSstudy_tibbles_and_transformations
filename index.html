@@ -165,6 +165,58 @@ class: top, center
 
 .center[![](palmerpenguins.png)]
 ---
+
+# Transformations
+
+### `filter()` based on an observation's values
+
+* What if we would like to view only observations related to the Chinstrap penguins?
+
+
+```r
+penguins %&gt;% 
+  filter(species == "Chinstrap")
+```
+
+```
+## # A tibble: 68 x 8
+##    species   island bill_length_mm bill_depth_mm flipper_length_mm body_mass_g
+##    &lt;fct&gt;     &lt;fct&gt;           &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;
+##  1 Chinstrap Dream            46.5          17.9               192        3500
+##  2 Chinstrap Dream            50            19.5               196        3900
+##  3 Chinstrap Dream            51.3          19.2               193        3650
+##  4 Chinstrap Dream            45.4          18.7               188        3525
+##  5 Chinstrap Dream            52.7          19.8               197        3725
+##  6 Chinstrap Dream            45.2          17.8               198        3950
+##  7 Chinstrap Dream            46.1          18.2               178        3250
+##  8 Chinstrap Dream            51.3          18.2               197        3750
+##  9 Chinstrap Dream            46            18.9               195        4150
+## 10 Chinstrap Dream            51.3          19.9               198        3700
+## # ... with 58 more rows, and 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;
+```
+---
+
+# Transformations
+
+### `arrange()` your observations based on a specific order of variable
+
+* Which type of penguin has the most observations in the data frame?
+
+```r
+penguins %&gt;%
+  count(species) %&gt;% 
+  arrange(desc(n))
+```
+
+```
+## # A tibble: 3 x 2
+##   species       n
+##   &lt;fct&gt;     &lt;int&gt;
+## 1 Adelie      152
+## 2 Gentoo      124
+## 3 Chinstrap    68
+```
+---
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
