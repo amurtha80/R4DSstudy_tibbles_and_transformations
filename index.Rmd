@@ -71,6 +71,7 @@ knitr::opts_chunk$set(
   message = FALSE,
   eval = TRUE)
 library(tidyverse)
+library(palmerpenguins)
 ```
 ---
 class: top, left
@@ -145,4 +146,11 @@ class: top, center
   + `mutate()` _create new variables or derive variables from existing ones_
   + `summarize()` _condense many observations down to a single summary (grouped summaries)_
   + grouped `mutate()` and `filter()` _change the scope of a function from all observations in a data frame to groups of observations within a data frame_
+---
+
+# Transformations
+
+### Poking around the `palmerpenguins` dataset
+
+.center[![](palmerpenguins.png)]
 ---
