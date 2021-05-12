@@ -72,6 +72,12 @@ knitr::opts_chunk$set(
   eval = TRUE)
 library(tidyverse)
 library(palmerpenguins)
+
+hook_source <- knitr::knit_hooks$get('source')
+knitr::knit_hooks$set(source = function(x, options) {
+  x <- stringr::str_replace(x, "^[[:blank:]]?([^*].+?)[[:blank:]]*#<<[[:blank:]]*$", "*\\1")
+  hook_source(x, options)
+})
 ```
 ---
 class: top, left
@@ -157,24 +163,27 @@ class: top, center
 
 # Transformations
 
-### `filter()` based on an observation's values
+#### `filter()` based on an observation's values
 
-* What if we would like to view only observations related to the Chinstrap penguins?
+* What if we would like to view only observations related to the Adelie penguins on Dream Island (Antarctica)?
 
 ```{r}
 penguins %>% 
-  filter(species == "Chinstrap")
+  filter(species == "Chinstrap", island == "Dream") %>% #<<
+  select(species:flipper_length_mm) %>% 
+  slice_head(n = 5)
 ```
 ---
 
 # Transformations
 
-### `arrange()` your observations based on a specific order of variable
+#### `arrange()` your observations based on a specific order of variable
 
-* Which type of penguin has the most observations in the data frame?
+* Which penguin species/island has the largest number of observations?
 ```{r}
 penguins %>%
-  count(species) %>% 
-  arrange(desc(n))
+  count(species, island, .drop = FALSE) %>%
+  rename("count" = n) %>% 
+  arrange(desc(count)) #<<
 ```
 ---

@@ -168,53 +168,56 @@ class: top, center
 
 # Transformations
 
-### `filter()` based on an observation's values
+#### `filter()` based on an observation's values
 
-* What if we would like to view only observations related to the Chinstrap penguins?
+* What if we would like to view only observations related to the Adelie penguins on Dream Island (Antarctica)?
 
 
 ```r
 penguins %&gt;% 
-  filter(species == "Chinstrap")
+* filter(species == "Chinstrap", island == "Dream") %&gt;%
+  select(species:flipper_length_mm) %&gt;% 
+  slice_head(n = 5)
 ```
 
 ```
-## # A tibble: 68 x 8
-##    species   island bill_length_mm bill_depth_mm flipper_length_mm body_mass_g
-##    &lt;fct&gt;     &lt;fct&gt;           &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;
-##  1 Chinstrap Dream            46.5          17.9               192        3500
-##  2 Chinstrap Dream            50            19.5               196        3900
-##  3 Chinstrap Dream            51.3          19.2               193        3650
-##  4 Chinstrap Dream            45.4          18.7               188        3525
-##  5 Chinstrap Dream            52.7          19.8               197        3725
-##  6 Chinstrap Dream            45.2          17.8               198        3950
-##  7 Chinstrap Dream            46.1          18.2               178        3250
-##  8 Chinstrap Dream            51.3          18.2               197        3750
-##  9 Chinstrap Dream            46            18.9               195        4150
-## 10 Chinstrap Dream            51.3          19.9               198        3700
-## # ... with 58 more rows, and 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;
+## # A tibble: 5 x 5
+##   species   island bill_length_mm bill_depth_mm flipper_length_mm
+##   &lt;fct&gt;     &lt;fct&gt;           &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;
+## 1 Chinstrap Dream            46.5          17.9               192
+## 2 Chinstrap Dream            50            19.5               196
+## 3 Chinstrap Dream            51.3          19.2               193
+## 4 Chinstrap Dream            45.4          18.7               188
+## 5 Chinstrap Dream            52.7          19.8               197
 ```
 ---
 
 # Transformations
 
-### `arrange()` your observations based on a specific order of variable
+#### `arrange()` your observations based on a specific order of variable
 
-* Which type of penguin has the most observations in the data frame?
+* Which penguin species/island has the largest number of observations?
 
 ```r
 penguins %&gt;%
-  count(species) %&gt;% 
-  arrange(desc(n))
+  count(species, island, .drop = FALSE) %&gt;%
+  rename("count" = n) %&gt;% 
+* arrange(desc(count))
 ```
 
 ```
-## # A tibble: 3 x 2
-##   species       n
-##   &lt;fct&gt;     &lt;int&gt;
-## 1 Adelie      152
-## 2 Gentoo      124
-## 3 Chinstrap    68
+## # A tibble: 9 x 3
+##   species   island    count
+##   &lt;fct&gt;     &lt;fct&gt;     &lt;int&gt;
+## 1 Gentoo    Biscoe      124
+## 2 Chinstrap Dream        68
+## 3 Adelie    Dream        56
+## 4 Adelie    Torgersen    52
+## 5 Adelie    Biscoe       44
+## 6 Chinstrap Biscoe        0
+## 7 Chinstrap Torgersen     0
+## 8 Gentoo    Dream         0
+## 9 Gentoo    Torgersen     0
 ```
 ---
     </textarea>
