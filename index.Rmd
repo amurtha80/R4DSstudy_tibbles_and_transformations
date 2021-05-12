@@ -167,11 +167,16 @@ class: top, center
 
 * What if we would like to view only observations related to the Adelie penguins on Dream Island (Antarctica)?
 
-```{r}
+```{r filter, results='hide'}
 penguins %>% 
   filter(species == "Chinstrap", island == "Dream") %>% #<<
   select(species:flipper_length_mm) %>% 
   slice_head(n = 5)
+```
+
+--
+
+```{r ref.label='filter', echo=FALSE}
 ```
 ---
 
@@ -180,10 +185,53 @@ penguins %>%
 #### `arrange()` your observations based on a specific order of variable
 
 * Which penguin species/island has the largest number of observations?
-```{r}
+```{r arrange, results='hide'}
 penguins %>%
   count(species, island, .drop = FALSE) %>%
   rename("count" = n) %>% 
   arrange(desc(count)) #<<
 ```
+
+--
+
+```{r ref.label='arrange', echo=FALSE}
+```
 ---
+
+# Transformations
+
+#### `select()` the variables you want
+
+- Allows one to focus on keeping specific variables for later use  
+
+--
+
+- `dplyr` package has many additional helper functions that allow you to get creative when selecting which variables you want to keep  
+
+--
+
+- This can allow you to create pipelines where you are fed source data, and through select only retain columns needed, even if the number of columns changed over time  
+
+  - _assuming that your target variables always remained in tact_
+  
+---
+
+# Transformations
+
+#### `select()` the variables you want _cont'd_
+
+* How would we go about grabbing only the variables with length or weight measurements?
+
+--
+
+```{r select-helper, results='hide'}
+penguins %>%
+  rowid_to_column("ID") %>% 
+  select(ID, ends_with("_mm") | ends_with("_g")) %>% #<<
+  slice_head(n = 5)
+```
+
+--
+
+```{r ref.label='select-helper', echo=FALSE}
+```

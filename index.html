@@ -180,6 +180,9 @@ penguins %&gt;%
   slice_head(n = 5)
 ```
 
+--
+
+
 ```
 ## # A tibble: 5 x 5
 ##   species   island bill_length_mm bill_depth_mm flipper_length_mm
@@ -205,6 +208,9 @@ penguins %&gt;%
 * arrange(desc(count))
 ```
 
+--
+
+
 ```
 ## # A tibble: 9 x 3
 ##   species   island    count
@@ -220,6 +226,54 @@ penguins %&gt;%
 ## 9 Gentoo    Torgersen     0
 ```
 ---
+
+# Transformations
+
+#### `select()` the variables you want
+
+- Allows one to focus on keeping specific variables for later use  
+
+--
+
+- `dplyr` package has many additional helper functions that allow you to get creative when selecting which variables you want to keep  
+
+--
+
+- This can allow you to create pipelines where you are fed source data, and through select only retain columns needed, even if the number of columns changed over time  
+
+  - _assuming that your target variables always remained in tact_
+  
+---
+
+# Transformations
+
+#### `select()` the variables you want _cont'd_
+
+* How would we go about grabbing only the variables with length or weight measurements?
+
+--
+
+
+```r
+penguins %&gt;%
+  rowid_to_column("ID") %&gt;% 
+* select(ID, ends_with("_mm") | ends_with("_g")) %&gt;%
+  slice_head(n = 5)
+```
+
+--
+
+
+```
+## # A tibble: 5 x 5
+##      ID bill_length_mm bill_depth_mm flipper_length_mm body_mass_g
+##   &lt;int&gt;          &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;
+## 1     1           39.1          18.7               181        3750
+## 2     2           39.5          17.4               186        3800
+## 3     3           40.3          18                 195        3250
+## 4     4           NA            NA                  NA          NA
+## 5     5           36.7          19.3               193        3450
+```
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
