@@ -1,5 +1,5 @@
 ---
-title: "R4DS Study Group 2"
+title: "R4DS Study Group 2 - Tibbles and Transformations"
 author: "Andy Murtha"
 date: '2016/05/05 (updated: `r Sys.Date()`)'
 output:
