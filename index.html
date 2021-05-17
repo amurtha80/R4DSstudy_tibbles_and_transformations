@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="" xml:lang="">
   <head>
-    <title>R4DS Study Group 2</title>
+    <title>R4DS Study Group 2 - Tibbles and Transformations</title>
     <meta charset="utf-8" />
     <meta name="author" content="Andy Murtha" />
     <script src="libs/header-attrs/header-attrs.js"></script>
@@ -274,6 +274,84 @@ penguins %&gt;%
 ## 4     4           NA            NA                  NA          NA
 ## 5     5           36.7          19.3               193        3450
 ```
+
+---
+
+# Transformations
+
+#### `mutate()` new variables or derive them from existing ones
+
+--
+
+- Mutate _always_ adds new columns at the end of your data frame
+
+--
+
+- You can create multiple new variables within the same function call
+
+--
+
+- You can refer to columns that you just created within the same `mutate()` function
+
+--
+
+- If you only want to keep the new variables that are created, use the `transmute()` function
+
+---
+
+# Transformations
+
+#### `mutate()` _cont'd_
+
+- There are many functions that you can use within `mutate()` to create new variables
+
+--
+
+- The key property is that the function must be vectorized:
+
+--
+
+  - It must take a _vector of values_ as input,
+  
+--
+
+  - and return a _vector with the same number of values_ as output
+
+---
+
+#Transformations
+
+#### `mutate()` _cont'd_
+
+- More commonly used functions within `mutate()`
+
+--
+
+  - Arithmetic operators _(+, -, *, /, ^)_
+
+--
+
+  - Modular arithmetic _(%/% and %%)_
+
+--
+
+  - Logs _(log(), log2(), log10())_
+
+--
+
+  - Offsets _(lead(), lag())_
+
+--
+
+  - Cumulative and Rolling aggregates _(cumsum(), cumprod(), cummin(), cummax(), cummean())_
+
+--
+
+  - Logical comparisons _(&lt;, &lt;=, ==, &gt;=, &gt;, !=)_
+
+--
+
+  - Ranking _(min_rank(), row_number(), dense_rank(), percent_rank(), cume_dist(), ntile())_
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
