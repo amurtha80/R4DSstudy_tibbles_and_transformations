@@ -337,3 +337,29 @@ penguins %>%
 
 ```{r ref.label='mutate-arithmetic', echo=FALSE}
 ```
+
+---
+
+# Transformations
+
+#### `mutate()` examples _cont'd_
+
+- Using the prior example and adding a ranking function, create a data frame of penguins with _bill ratios from largest to smallest_  
+
+--
+
+```{r mutate-rank, results='hide'}
+penguins %>%
+  rowid_to_column("ID") %>%
+  filter(!is.na(bill_length_mm) == TRUE | !is.na(bill_depth_mm) == TRUE) %>% 
+  mutate(bill_ratio = bill_length_mm / bill_depth_mm, na.rm = TRUE,
+         rank = rank(desc(bill_ratio))) %>% #<<
+  select(ID, contains("bill"), bill_ratio, rank) %>%
+  arrange(rank) %>% 
+  slice_head(n = 4)
+```
+
+--
+
+```{r ref.label='mutate-rank', echo=FALSE}
+```
