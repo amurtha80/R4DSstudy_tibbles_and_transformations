@@ -393,7 +393,7 @@ penguins %&gt;%
 
 #### `mutate()` examples _cont'd_
 
-- Using the prior example and adding a ranking function, create a data frame of penguins with _bill ratios in descending order_  
+- Using the prior example and adding a ranking function, create a data frame of penguins with _bill ratios from largest to smallest_  
 
 --
 
@@ -421,6 +421,37 @@ penguins %&gt;%
 ## 3   186           59.6          17         3.51     3
 ## 4   153           46.1          13.2       3.49     4
 ```
+
+---
+
+# Transformations
+
+#### `summarize() | summarise()` many observations into a single summary
+
+--
+
+- Almost always paired with a `group_by()` function, otherwise `summarize()` is not a terribly useful function
+
+--
+
+  - This will change the unit of analysis from the complete dataset into individual groups
+
+--
+
+  - If you would like to summarize a individual variable, or general info about the entire data frame (e.g. count of all observations), then a `group_by()` function is not required
+
+--
+
+- Accounting for missing values is important when using `summarize()`
+
+--
+
+  - If there are any missing values in the input, the output will be a missing value
+
+--
+
+- Depending on what you would like to do with the data frame after summarizing the data, `ungroup()` may be necessary
+  
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>

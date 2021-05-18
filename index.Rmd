@@ -363,3 +363,34 @@ penguins %>%
 
 ```{r ref.label='mutate-rank', echo=FALSE}
 ```
+
+---
+
+# Transformations
+
+#### `summarize() | summarise()` many observations into a single summary
+
+--
+
+- Almost always paired with a `group_by()` function, otherwise `summarize()` is not a terribly useful function
+
+--
+
+  - This will change the unit of analysis from the complete dataset into individual groups
+
+--
+
+  - If you would like to summarize a individual variable, or general info about the entire data frame (e.g. count of all observations), then a `group_by()` function is not required
+
+--
+
+- Accounting for missing values is important when using `summarize()`
+
+--
+
+  - If there are any missing values in the input, the output will be a missing value
+
+--
+
+- Depending on what you would like to do with the data frame after summarizing the data, `ungroup()` may be necessary
+  
