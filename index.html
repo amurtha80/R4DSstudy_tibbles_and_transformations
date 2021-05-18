@@ -352,6 +352,40 @@ penguins %&gt;%
 --
 
   - Ranking _(min_rank(), row_number(), dense_rank(), percent_rank(), cume_dist(), ntile())_
+
+---
+
+# Transformations
+
+#### `mutate()` examples
+
+- Using arithmetic operators, create a _bill ratio_ between bill length and bill depth (ignoring missing values)
+
+--
+
+
+```r
+penguins %&gt;%
+  rowid_to_column("ID") %&gt;%
+  filter(!is.na(bill_length_mm) == TRUE | !is.na(bill_depth_mm) == TRUE) %&gt;% 
+* mutate(bill_ratio = bill_length_mm / bill_depth_mm, na.rm = TRUE) %&gt;%
+  select(ID, contains("bill"), bill_ratio) %&gt;% 
+  slice_head(n = 5)
+```
+
+--
+
+
+```
+## # A tibble: 5 x 4
+##      ID bill_length_mm bill_depth_mm bill_ratio
+##   &lt;int&gt;          &lt;dbl&gt;         &lt;dbl&gt;      &lt;dbl&gt;
+## 1     1           39.1          18.7       2.09
+## 2     2           39.5          17.4       2.27
+## 3     3           40.3          18         2.24
+## 4     5           36.7          19.3       1.90
+## 5     6           39.3          20.6       1.91
+```
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>

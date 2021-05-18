@@ -313,3 +313,27 @@ penguins %>%
 --
 
   - Ranking _(min_rank(), row_number(), dense_rank(), percent_rank(), cume_dist(), ntile())_
+
+---
+
+# Transformations
+
+#### `mutate()` examples
+
+- Using arithmetic operators, create a _bill ratio_ between bill length and bill depth (ignoring missing values)
+
+--
+
+```{r mutate-arithmetic, results='hide'}
+penguins %>%
+  rowid_to_column("ID") %>%
+  filter(!is.na(bill_length_mm) == TRUE | !is.na(bill_depth_mm) == TRUE) %>% 
+  mutate(bill_ratio = bill_length_mm / bill_depth_mm, na.rm = TRUE) %>% #<<
+  select(ID, contains("bill"), bill_ratio) %>% 
+  slice_head(n = 5)
+```
+
+--
+
+```{r ref.label='mutate-arithmetic', echo=FALSE}
+```
