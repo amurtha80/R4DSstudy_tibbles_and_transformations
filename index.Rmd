@@ -90,7 +90,9 @@ class: top, left
 as_tibble(iris[1:5,1:2])
 ```
 ]
+
 --
+
 .pull-right[Creating a tibble
 ```{r}
 tibble(
@@ -100,6 +102,7 @@ tibble(
 )
 ```
 ]
+
 ---
 
 # Tibbles
@@ -393,4 +396,49 @@ penguins %>%
 --
 
 - Depending on what you would like to do with the data frame after summarizing the data, `ungroup()` may be necessary
-  
+
+---
+
+# Transformations
+
+#### `summarize()` _cont'd_
+
+- Summarizing observations from an entire data frame
+
+--
+
+```{r summarize-all, results='hide'}
+penguins %>%
+  summarize(count = n()) #<<
+```
+
+--
+
+```{r ref.label='summarize-all', echo=FALSE}
+```
+
+---
+
+# Transformations
+
+#### `summarize()` _cont'd_
+
+- Summarizing observations from groups within a data frame
+
+--
+
+```{r summarize-groups, results='hide'}
+penguins %>%
+  group_by(species) %>% 
+  summarize(avg_bill_len_mm = mean(bill_length_mm, na.rm = TRUE)) %>% #<<
+  arrange(desc(avg_bill_len_mm))
+```
+
+--
+
+```{r ref.label='summarize-groups', echo=FALSE}
+```
+
+--
+
+- <span style="color: navy;">_**Note that the missing values have been removed so the mean summary values by species are returned**_</span>
