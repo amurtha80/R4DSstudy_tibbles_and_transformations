@@ -460,7 +460,7 @@ penguins %>%
 
 #### `summarize()` _cont'd_
 
-- Summarizing observations from groups within a data frame
+- Summarizing observations from groups within a data frame, wanting to get the _average bill length across all 3 species of penguin_
 
 --
 
