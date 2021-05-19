@@ -131,13 +131,20 @@ tibble(
 
 ### Interacting with Older Code
 
-&lt;br&gt;&lt;br&gt;
+&lt;br&gt;
+
 --
+
 - Some older functions don't work with tibbles. If this is the case use `as.data.frame()` to coerce the tibble to a `data.frame`
+
 --
-&lt;br&gt;- The primary reason that some older functions don't work with tibble is the `[` function.
+
+- The primary reason that some older functions don't work with tibble is the `[` function.
+
 --
-&lt;br&gt;- With base R data frames, `[` sometimes returns a data frame, and sometimes returns a vector. With tibbles, `[` always returns another tibble
+
+- With base R data frames, `[` sometimes returns a data frame, and sometimes returns a vector. With tibbles, `[` always returns another tibble
+
 ---
 class: top, center
 
