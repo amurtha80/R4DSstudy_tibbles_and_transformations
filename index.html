@@ -551,6 +551,54 @@ penguins %&gt;%
 --
 
 - &lt;span style="color: navy;"&gt;_**Note that the missing values have been removed so the mean summary values by species are returned**_&lt;/span&gt;
+
+---
+
+# Transformations
+
+#### Grouped `mutate()` and `filter()`
+
+--
+
+- Change the scope of a function from _all observations_ in a data frame to _groups of observations_ in a data frame
+
+--
+
+- Similar to grouped summaries, this allows one to complete convenient operations across groups of the data frame
+
+---
+
+# Transformations
+
+#### Grouped `filter()` example
+
+- We would like to see the lightest penguins (by weight) for each Species/Island combination
+
+
+```r
+penguins %&gt;%
+  group_by(species, island) %&gt;%
+* mutate(rank = min_rank(body_mass_g)) %&gt;%
+  filter(rank &lt; 4) %&gt;% arrange(species, island, rank) %&gt;% 
+  select(species, island, body_mass_g) %&gt;% head(n = 7)
+```
+
+--
+
+
+```
+## # A tibble: 7 x 3
+## # Groups:   species, island [2]
+##   species island body_mass_g
+##   &lt;fct&gt;   &lt;fct&gt;        &lt;int&gt;
+## 1 Adelie  Biscoe        2850
+## 2 Adelie  Biscoe        2850
+## 3 Adelie  Biscoe        2900
+## 4 Adelie  Dream         2900
+## 5 Adelie  Dream         2975
+## 6 Adelie  Dream         3000
+## 7 Adelie  Dream         3000
+```
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>

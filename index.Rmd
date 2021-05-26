@@ -479,3 +479,38 @@ penguins %>%
 --
 
 - <span style="color: navy;">_**Note that the missing values have been removed so the mean summary values by species are returned**_</span>
+
+---
+
+# Transformations
+
+#### Grouped `mutate()` and `filter()`
+
+--
+
+- Change the scope of a function from _all observations_ in a data frame to _groups of observations_ in a data frame
+
+--
+
+- Similar to grouped summaries, this allows one to complete convenient operations across groups of the data frame
+
+---
+
+# Transformations
+
+#### Grouped `mutate()` example
+
+- We would like to see the lightest penguins (by weight) for each Species/Island combination
+
+```{r mutate-groups, results='hide'}
+penguins %>%
+  group_by(species, island) %>%
+  mutate(rank = min_rank(body_mass_g)) %>% #<<
+  filter(rank < 4) %>% arrange(species, island, rank) %>% 
+  select(species, island, body_mass_g) %>% head(n = 7)
+```
+
+--
+
+```{r ref.label='mutate-groups', echo=FALSE}
+```
