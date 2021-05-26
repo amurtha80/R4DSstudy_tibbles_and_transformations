@@ -162,7 +162,7 @@ class: top, center
 
 # Transformations
 
-### Goal: To get the data in exactly the correct form you need
+### Goal: To get the data exactly in the form you need
 
 --
 
@@ -514,3 +514,39 @@ penguins %>%
 
 ```{r ref.label='mutate-groups', echo=FALSE}
 ```
+
+---
+
+# Transformations
+
+#### Grouped `filter()` example
+
+- Looking for penguins that ...
+
+```{r filter-groups, results='hide'}
+penguins %>%
+  
+```
+
+--
+
+```{r ref.label='filter-groups', echo=FALSE}
+```
+
+---
+
+# Tibbles and Transformations - Recap
+
+- Tibbles are an alternative way to frame your data
+
+--
+
+  - an alternative to data frames, that play well with the tidyverse group of packages
+
+--
+
+- Transforming your data allows you to get the data exactly in the form you need
+
+--
+
+  - Allows data to be readily available for use with data visualization, analysis, machine learning pipelines, and more
