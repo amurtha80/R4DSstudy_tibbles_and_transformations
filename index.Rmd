@@ -524,8 +524,6 @@ penguins %>%
 - Looking for penguins that ...
 
 ```{r filter-groups, results='hide'}
-penguins %>%
-  
 ```
 
 --
@@ -550,3 +548,12 @@ penguins %>%
 --
 
   - Allows data to be readily available for use with data visualization, analysis, machine learning pipelines, and more
+  
+
+---
+
+class: top, center
+
+# Thank You!
+
+.center[![](fin.jpg)]
