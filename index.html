@@ -577,7 +577,7 @@ penguins %&gt;%
 
 ```r
 penguins %&gt;%
-  group_by(species, island) %&gt;%
+* group_by(species, island) %&gt;%
 * mutate(rank = min_rank(body_mass_g)) %&gt;%
   filter(rank &lt; 4) %&gt;% arrange(species, island, rank) %&gt;% 
   select(species, island, body_mass_g) %&gt;% head(n = 7)
@@ -606,13 +606,32 @@ penguins %&gt;%
 
 #### Grouped `filter()` example
 
-- Looking for penguins that ...
+- What is the largest body mass for each group of penguins, by species and sex?
 
 
+```r
+penguins %&gt;% 
+* group_by(species, sex) %&gt;%
+* filter(body_mass_g == max(body_mass_g)) %&gt;%
+  select(species, sex, body_mass_g) %&gt;% slice_head(n=6)
+```
 
 --
 
 
+```
+## # A tibble: 7 x 3
+## # Groups:   species, sex [6]
+##   species   sex    body_mass_g
+##   &lt;fct&gt;     &lt;fct&gt;        &lt;int&gt;
+## 1 Adelie    female        3900
+## 2 Adelie    male          4775
+## 3 Chinstrap female        4150
+## 4 Chinstrap male          4800
+## 5 Gentoo    female        5200
+## 6 Gentoo    female        5200
+## 7 Gentoo    male          6300
+```
 
 ---
 
@@ -626,13 +645,24 @@ penguins %&gt;%
 
 --
 
+  - tibbles are lazy and don't try to coerce or change your variables without your knowledge
+
+--
+
+  - more user friendly and informative print of data when viewing in console
+
+--
+
 - Transforming your data allows you to get the data exactly in the form you need
 
 --
 
   - Allows data to be readily available for use with data visualization, analysis, machine learning pipelines, and more
-  
 
+--
+
+  - `dplyr` package verbs tend to be more user friendly than base R, and for those who have experience with SQL, it is an easy  transition
+  
 ---
 
 class: top, center

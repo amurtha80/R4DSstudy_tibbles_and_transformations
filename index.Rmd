@@ -504,7 +504,7 @@ penguins %>%
 
 ```{r mutate-groups, results='hide'}
 penguins %>%
-  group_by(species, island) %>%
+  group_by(species, island) %>% #<<
   mutate(rank = min_rank(body_mass_g)) %>% #<<
   filter(rank < 4) %>% arrange(species, island, rank) %>% 
   select(species, island, body_mass_g) %>% head(n = 7)
@@ -521,9 +521,13 @@ penguins %>%
 
 #### Grouped `filter()` example
 
-- Looking for penguins that ...
+- What is the largest body mass for each group of penguins, by species and sex?
 
 ```{r filter-groups, results='hide'}
+penguins %>% 
+  group_by(species, sex) %>% #<<
+  filter(body_mass_g == max(body_mass_g)) %>%  #<<
+  select(species, sex, body_mass_g) %>% slice_head(n=6)
 ```
 
 --
@@ -543,13 +547,24 @@ penguins %>%
 
 --
 
+  - tibbles are lazy and don't try to coerce or change your variables without your knowledge
+
+--
+
+  - more user friendly and informative print of data when viewing in console
+
+--
+
 - Transforming your data allows you to get the data exactly in the form you need
 
 --
 
   - Allows data to be readily available for use with data visualization, analysis, machine learning pipelines, and more
-  
 
+--
+
+  - `dplyr` package verbs tend to be more user friendly than base R, and for those who have experience with SQL, it is an easy  transition
+  
 ---
 
 class: top, center
